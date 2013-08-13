@@ -7,3 +7,14 @@ GET     /                           controllers.Application.index()
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
+
+# Home page
+GET     /books                           controllers.Application.showBookList(p:Int ?= 0, s ?= "title", o ?= "asc", f ?= "")
+
+# Add computer
+GET     /books/new              controllers.Application.createBook()
+#POST    /computers                  controllers.Application.save()
+
+# Edit existing computer
+GET     /books/:id              controllers.Application.editBook(id:Int)
+#POST    /computers/:id              controllers.Application.update(id:Long)

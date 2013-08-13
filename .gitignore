@@ -11,3 +11,7 @@ columns-20130809.tar.gz
 columns.zip
 
 books/README
+
+books/.target
+
+books/lib/commons-daemon-1.0.15.jar
