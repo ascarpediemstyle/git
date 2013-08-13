@@ -13,7 +13,7 @@ GET     /books                           controllers.Application.showBookList(p:
 
 # Add computer
 GET     /books/new              controllers.Application.createBook()
-#POST    /computers                  controllers.Application.save()
+POST    /computers                  controllers.Application.saveBook()
 
 # Edit existing computer
 GET     /books/:id              controllers.Application.editBook(id:Int)

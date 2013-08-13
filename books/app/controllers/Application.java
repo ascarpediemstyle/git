@@ -1,5 +1,7 @@
 package controllers;
 
+import java.util.Date;
+
 import play.*;
 
 import play.mvc.*;
@@ -11,6 +13,10 @@ import models.*;
 
 public class Application extends Controller {
   
+	public static Result GO_HOME = redirect(
+	        routes.Application.showBookList(0, "title", "asc", "")
+	    );
+	
     public static Result index() {
         return ok(index.render("Your new application is ready."));
     }
@@ -53,6 +59,22 @@ public static Result showAllBookList() {
         return ok(
             bookEditForm.render(id, bookForm)
         );
+    }
+    
+    /**
+     * Handle the 'new computer form' submission 
+     */
+    public static Result saveBook() {
+        Form<Book> bookForm = Form.form(Book.class).bindFromRequest();
+        if(bookForm.hasErrors()) {
+            return badRequest(bookCreateForm.render(bookForm));
+        }
+        Book book = bookForm.get();;
+        book.createDate = new Date();
+        book.updateDate = new Date();
+        book.save();
+        flash("success", "Book " + bookForm.get().title + " has been created");
+        return GO_HOME;
     }
 
 }

@@ -5,15 +5,15 @@
 @main("welcome"){
     
     <h1>Add a computer</h1>
-    @**
+    
     @form(routes.Application.saveBook()) {
         
         <fieldset>
         
-            @inputText(bookForm("title"), '_label -> "Book name")
+            @inputText(bookForm("title"), '_label -> "Book title")
             @inputText(bookForm("memo"), '_label -> "Book memo")            
             @textarea(bookForm("comment"), '_label -> "Book comment",'_rows -> 5)
-            @textarea(bookForm("amazonLink"),'_label -> "Book Amazon", '_rows -> 5)
+            @textarea(bookForm("amazonLink"),'_label -> "Book amazon", '_rows -> 5)
             @select(
                 field = bookForm("rating")
                   , options = options(("1" -> "1"), ("2" -> "2"), ("3" -> "3"))
@@ -25,8 +25,8 @@
         
         <div class="actions">
             <input type="submit" value="Create this book" class="btn primary"> or 
-            <a href="@routes.Application.showBooklist()" class="btn">Cancel</a> 
+            @*<a href="@routes.Application.showBooklist()" class="btn">Cancel</a>*@ 
         </div>        
         
-    }    **@
+    } 
 }
