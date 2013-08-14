@@ -4,27 +4,27 @@
 
 @main("welcome") {
     
-    <h1>Edit computer</h1>
-    @***
-    @form(routes.Application.update(id)) {
+    <h1>Edit Book</h1>
+    
+    @form(routes.BookApplication.updateBook(id)) {
         
         <fieldset>
         
-            @inputText(bookForm("name"), '_label -> "Computer name")    
+            @inputText(bookForm("title"), '_label -> "Book title")    
             
         
         </fieldset>
         
         <div class="actions">
-            <input type="submit" value="Save this computer" class="btn primary"> or 
-            <a href="@routes.Application.list()" class="btn">Cancel</a> 
+            <input type="submit" value="Save this book" class="btn primary"> or 
+            <a href="@routes.BookApplication.showBookList(0,"title","desc","")" class="btn">Cancel</a> 
         </div>
         
     }
     
-    @form(routes.Application.delete(id), 'class -> "topRight") {
-        <input type="submit" value="Delete this computer" class="btn danger">
+    @form(routes.BookApplication.deleteBook(id), 'class -> "topRight") {
+        <input type="submit" value="Delete this book" class="btn danger">
     }
-    **@
+    
     
 }

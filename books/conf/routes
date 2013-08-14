@@ -3,18 +3,24 @@
 # ~~~~
 
 # Home page
-GET     /                           controllers.Application.index()
+GET     /                           controllers.BookApplication.index()
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
 
 # Home page
-GET     /books                           controllers.Application.showBookList(p:Int ?= 0, s ?= "title", o ?= "asc", f ?= "")
+GET     /books                           controllers.BookApplication.showBookList(p:Int ?= 0, s ?= "title", o ?= "asc", f ?= "")
 
-# Add computer
-GET     /books/new              controllers.Application.createBook()
-POST    /computers                  controllers.Application.saveBook()
+# Add book
+GET     /books/new              controllers.BookApplication.createBook()
+POST    /books                  controllers.BookApplication.saveBook()
 
-# Edit existing computer
-GET     /books/:id              controllers.Application.editBook(id:Int)
-#POST    /computers/:id              controllers.Application.update(id:Long)
+# Edit existing book
+GET     /books/edit/:id              controllers.BookApplication.editBook(id:Int)
+POST    /books/edit/:id              controllers.BookApplication.updateBook(id:Int)
+
+# Reference existing book
+GET     /books/ref/:id              controllers.BookApplication.showBook(id:Int)
+
+# Delete a computer
+POST    /books/:id/delete       controllers.BookApplication.deleteBook(id:Int)

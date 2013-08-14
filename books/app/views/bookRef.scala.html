@@ -1,0 +1,16 @@
+@(book:Book)
+
+@import helper._
+
+@main(""){
+	
+   <fieldset>            
+           <table border="0" cellspacing="5" cellpadding="5">              
+               <tr><td>Book title</td><td>@book.title</td></tr>
+               <tr><td>Book memo</td><td>@book.memo</td></tr>
+               <tr><td>cBook omment</td><td>@book.comment</td></tr>
+               <tr><td>Book amazon</td><td>@book.amazonLink</td></tr>
+               <tr><td>rating</td><td>@book.rating</td></tr>
+           </table>
+    </fieldset>
+}

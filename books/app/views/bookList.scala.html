@@ -22,7 +22,7 @@
     }
     
     // Generate the link
-    routes.Application.showBookList(newPage, sortBy, order, currentFilter)
+    routes.BookApplication.showBookList(newPage, sortBy, order, currentFilter)
     
 }
 
@@ -38,7 +38,10 @@
 @main("Book List") {
     
    @*<h1 id="homeTitle">@Messages("books.list.title", currentPage.getTotalRowCount)</h1>*@
-
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/bootstrap.min.css")">
+        <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
+        <script src="@routes.Assets.at("javascripts/jquery-1.9.0.min.js")" type="text/javascript"></script>
+    
     @if(flash.containsKey("success")) {
         <div class="alert-message warning">
             <strong>Done!</strong> @flash.get("success")
@@ -48,11 +51,11 @@
     <div id="actions">
         
         <form action="@link(0, "title")" method="GET">
-            <input type="search" id="searchbox" name="f" value="@currentFilter" placeholder="Filter by computer name...">
-            <input type="submit" id="searchsubmit" value="Filter by name" class="btn primary">
+            <input type="search" id="searchbox" name="f" value="@currentFilter" placeholder="Filter by book title...">
+            <input type="submit" id="searchsubmit" value="Filter by title" class="btn primary">
         </form>
         
-        <a class="btn success" id="add" href="@routes.Application.createBook()">Add a new book</a>
+        <a class="btn success" id="add" href="@routes.BookApplication.createBook()">Add a new book</a>
         
     </div>
     
@@ -74,7 +77,7 @@
 
                 @for(book <- currentPage.getList) {
                     <tr>
-                        <td><a href="@routes.Application.editBook(book.book_id)">@book.title</a></td>
+                        <td><a href="@routes.BookApplication.showBook(book.book_id)">@book.title</a></td>
                         <td>@Html(book.amazonLink)</td>
                         
                     </tr>
@@ -90,9 +93,9 @@
                         <a href="@link(currentPage.getPageIndex - 1, null)">&larr; Previous</a>
                     </li>
                 } else {
-                   <!--  <li class="prev disabled">
+                   <li class="prev disabled">
                         <a>&larr; Previous</a>
-                    </li> -->
+                    </li> 
                 }
                 <li class="current">
                     <a>Displaying @currentPage.getDisplayXtoYofZ(" to "," of ")</a>
@@ -102,9 +105,9 @@
                         <a href="@link(currentPage.getPageIndex + 1, null)">Next &rarr;</a>
                     </li>
                 } else {
-                    <!-- <li class="next disabled">
+                    <li class="next disabled">
                         <a>Next &rarr;</a>
-                    </li> -->
+                    </li>
                 }
             </ul>
         </div>        

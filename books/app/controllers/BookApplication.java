@@ -11,10 +11,10 @@ import views.html.*;
 
 import models.*;
 
-public class Application extends Controller {
+public class BookApplication extends Controller {
   
 	public static Result GO_HOME = redirect(
-	        routes.Application.showBookList(0, "title", "asc", "")
+	        routes.BookApplication.showBookList(0, "title", "asc", "")
 	    );
 	
     public static Result index() {
@@ -35,7 +35,15 @@ public static Result showAllBookList() {
         
     	return showBookList(0,"title","desc","");
     }
-    
+
+	public static Result showBook(int id) {
+	    
+		Book book = Book.find.ref(id);
+		return ok(
+			bookRef.render(book)
+		);
+	}
+	    
 
     /**
      * Display the 'new computer form'.
@@ -76,5 +84,31 @@ public static Result showAllBookList() {
         flash("success", "Book " + bookForm.get().title + " has been created");
         return GO_HOME;
     }
+    
+    /**
+     * Handle the 'edit form' submission 
+     *
+     * @param id Id of the computer to edit
+     */
+    public static Result updateBook(int id) {
+        Form<Book> bookForm = Form.form(Book.class).bindFromRequest();
+        if(bookForm.hasErrors()) {
+            return badRequest(bookEditForm.render(id, bookForm));
+        }
+        bookForm.get().update(id);
+        flash("success", "Book " + bookForm.get().title + " has been updated");
+        return GO_HOME;
+    }
+    
+    
+    /**
+     * Handle computer deletion
+     */
+    public static Result deleteBook(int id) {
+        Book.find.ref(id).delete();
+        flash("success", "Book has been deleted");
+        return GO_HOME;
+    }
+
 
 }

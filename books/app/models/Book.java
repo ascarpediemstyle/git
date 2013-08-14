@@ -69,6 +69,8 @@ public class Book extends Model{
     	
     }
     
+    
+    
 //    public static Map<String,String> options() {
 //        LinkedHashMap<String,String> options = new LinkedHashMap<String,String>();
 //        for(Book b: Book.find.orderBy("title").findList()) {
