@@ -37,8 +37,8 @@
 
 @main("Book List") {
     
-   @*<h1 id="homeTitle">@Messages("books.list.title", currentPage.getTotalRowCount)</h1>*@
-        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/bootstrap.min.css")">
+  @* <h1 id="homeTitle">@Messages("books.list.title", currentPage.getTotalRowCount)</h1>*@
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/books.css")">
         <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
         <script src="@routes.Assets.at("javascripts/jquery-1.9.0.min.js")" type="text/javascript"></script>
     
@@ -52,7 +52,7 @@
         
         <form action="@link(0, "title")" method="GET">
             <input type="search" id="searchbox" name="f" value="@currentFilter" placeholder="Filter by book title...">
-            <input type="submit" id="searchsubmit" value="Filter by title" class="btn primary">
+            <input type="submit" id="searchsubmit" value="Filter by title" class="btn search">
         </form>
         
         <a class="btn success" id="add" href="@routes.BookApplication.createBook()">Add a new book</a>
@@ -70,7 +70,8 @@
         <table class="computers zebra-striped">
             <thead>
                 <tr>
-                    @header("name", "Book title")                 
+                    @header("name", "Book title")
+                    @header("name", "comment")                    
                 </tr>
             </thead>
             <tbody>
