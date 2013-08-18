@@ -9,6 +9,10 @@ GET     /                           controllers.BookApplication.index()
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
 
 # Home page
+GET     /login                       controllers.UserApplication.login()
+POST    /auth                  		 controllers.UserApplication.auth()
+
+# Home page
 GET     /books                           controllers.BookApplication.showBookList(p:Int ?= 0, s ?= "title", o ?= "asc", f ?= "")
 
 # Add book
@@ -22,5 +26,5 @@ POST    /books/edit/:id              controllers.BookApplication.updateBook(id:I
 # Reference existing book
 GET     /books/ref/:id              controllers.BookApplication.showBook(id:Int)
 
-# Delete a computer
+# Delete a book
 POST    /books/:id/delete       controllers.BookApplication.deleteBook(id:Int)

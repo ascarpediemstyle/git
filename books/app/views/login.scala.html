@@ -1,0 +1,18 @@
+@(userForm: Form[User])
+
+@import helper._
+
+@main("login") {
+    
+    @form(routes.UserApplication.login()) {
+    	<fieldset>
+	    	@inputText(userForm("user_id"), '_label -> "user id")  
+	    	@inputText(userForm("password"), '_label -> "password") 
+	    </fieldset>
+	    
+	    <div class="actions">
+            <input type="submit" value="login" class="btn primary">            
+        </div>   	  
+            
+    }    
+}

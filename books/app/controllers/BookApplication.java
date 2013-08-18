@@ -48,6 +48,7 @@ public static Result showAllBookList() {
     /**
      * Display the 'new computer form'.
      */
+	@With(Secure.class)
     public static Result createBook() {
         Form<Book> bookForm = Form.form(Book.class);
         return ok(
