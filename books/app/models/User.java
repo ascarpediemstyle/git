@@ -11,6 +11,7 @@ import play.data.validation.*;
 import com.avaje.ebean.*;
 
 @Entity
+@Table(uniqueConstraints = { @UniqueConstraint(columnNames = { "user_id" }) })
 public class User extends Model{
 	
 	/**
@@ -18,8 +19,8 @@ public class User extends Model{
 	 */
 	private static final long serialVersionUID = 1L;
 
-	@Id
-	public int user_id;
+	@Constraints.Required
+	public String user_id;
 	
 	@Constraints.Required
 	public String user_name;

@@ -10,6 +10,7 @@ import play.db.ebean.*;
 import views.html.*;
 
 import models.*;
+import actions.*;
 
 public class BookApplication extends Controller {
   
@@ -48,7 +49,7 @@ public static Result showAllBookList() {
     /**
      * Display the 'new computer form'.
      */
-	@With(Secure.class)
+	@With(BasicAuth.class)
     public static Result createBook() {
         Form<Book> bookForm = Form.form(Book.class);
         return ok(
