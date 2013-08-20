@@ -22,6 +22,8 @@ public class BookApplication extends Controller {
         return ok(index.render("Your new application is ready."));
     }
     
+
+
     public static Result showBookList(int page, String sortBy, String order, String filter) {
         
     	return ok(
@@ -32,7 +34,7 @@ public class BookApplication extends Controller {
             );
     }
     
-public static Result showAllBookList() {
+public static Result showBookList() {
         
     	return showBookList(0,"title","desc","");
     }
@@ -62,6 +64,7 @@ public static Result showAllBookList() {
      *
      * @param id Id of the computer to edit
      */
+	@With(BasicAuth.class)
     public static Result editBook(int id) {
         Form<Book> bookForm = Form.form(Book.class).fill(
         		Book.find.byId(id)
@@ -74,6 +77,7 @@ public static Result showAllBookList() {
     /**
      * Handle the 'new computer form' submission 
      */
+	@With(BasicAuth.class)
     public static Result saveBook() {
         Form<Book> bookForm = Form.form(Book.class).bindFromRequest();
         if(bookForm.hasErrors()) {
@@ -92,6 +96,7 @@ public static Result showAllBookList() {
      *
      * @param id Id of the computer to edit
      */
+	@With(BasicAuth.class)
     public static Result updateBook(int id) {
         Form<Book> bookForm = Form.form(Book.class).bindFromRequest();
         if(bookForm.hasErrors()) {
@@ -106,6 +111,7 @@ public static Result showAllBookList() {
     /**
      * Handle computer deletion
      */
+	@With(BasicAuth.class)
     public static Result deleteBook(int id) {
         Book.find.ref(id).delete();
         flash("success", "Book has been deleted");

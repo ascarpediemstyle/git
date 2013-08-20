@@ -14,6 +14,7 @@ POST    /auth                  		 controllers.UserApplication.auth()
 
 # Home page
 GET     /books                           controllers.BookApplication.showBookList(p:Int ?= 0, s ?= "title", o ?= "asc", f ?= "")
+GET     /books/top                       controllers.BookApplication.showBookList(p:Int ?= 0, s ?= "title", o ?= "asc", f ?= "")
 
 # Add book
 GET     /books/new              controllers.BookApplication.createBook()

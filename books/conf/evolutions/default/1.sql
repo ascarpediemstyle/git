@@ -15,13 +15,13 @@ create table book (
   constraint pk_book primary key (book_id))
 ;
 
-create table user (
-  user_id                   varchar(255),
-  user_name                 varchar(255),
+create table member (
+  member_id                 varchar(255),
+  member_name               varchar(255),
   password                  varchar(255),
   create_date               timestamp,
   update_date               timestamp,
-  constraint uq_user_1 unique (user_id))
+  constraint uq_member_1 unique (member_id))
 ;
 
 create sequence book_seq;
@@ -33,7 +33,7 @@ create sequence book_seq;
 
 drop table if exists book cascade;
 
-drop table if exists user cascade;
+drop table if exists member cascade;
 
 drop sequence if exists book_seq;
 

@@ -11,19 +11,19 @@ import play.data.validation.*;
 import com.avaje.ebean.*;
 
 @Entity
-@Table(uniqueConstraints = { @UniqueConstraint(columnNames = { "user_id" }) })
-public class User extends Model{
+@Table(uniqueConstraints = { @UniqueConstraint(columnNames = { "member_id" }) })
+public class Member extends Model{
 	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
-	@Constraints.Required
-	public String user_id;
 	
 	@Constraints.Required
-	public String user_name;
+	public String member_id;
+	
+	@Constraints.Required
+	public String member_name;
 	
 	@Constraints.Required
 	public String password;
@@ -35,22 +35,34 @@ public class User extends Model{
 	public Date updateDate;
 	
 	public String toString(){
-		return user_name;
+		return member_name;
 	}
 	
 	/**
      * Generic query helper for entity Computer with id Long
      */
-    public static Finder<Integer,User> find = new Finder<Integer,User>(Integer.class, User.class); 
+    public static Finder<String,Member> find = new Finder<String,Member>(String.class, Member.class); 
     
-    public static Page<User> page(int page, int pageSize, String sortBy, String order, String filter) {
+    public static Page<Member> page(int page, int pageSize, String sortBy, String order, String filter) {
         
     	return 
                 find.where()
-                    .ilike("name", "%" + filter + "%")
+                    .ilike("member_name", "%" + filter + "%")
                     .orderBy(sortBy + " " + order)
                     .findPagingList(pageSize)
                     .getPage(page);    	
+    }
+    
+    public static Member getMember(String memberId)
+    {
+    	List<Member> members = find.where().eq("member_id", memberId).query().findList();
+    	
+    	if(members.size() == 1){
+    		return members.get(0);
+    	}
+    	else{
+    		return null;
+    	}                    
     }
     
 	

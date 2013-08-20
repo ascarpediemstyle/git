@@ -19,3 +19,5 @@ STATEMENT:  create table user (
 	create_date               timestamp,
 	update_date               timestamp,
 	constraint uq_user_1 unique (user_id))
+ERROR:  syntax error at or near "user" at character 22
+STATEMENT:  drop table if exists user cascade

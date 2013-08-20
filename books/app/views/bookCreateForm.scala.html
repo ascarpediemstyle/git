@@ -21,15 +21,13 @@
             @select(
                 field = bookForm("rating")
                   , options = options(("1" -> "1"), ("2" -> "2"), ("3" -> "3"))
-                  )
+                  )          
             
-             http://ermaster.sourceforge.net/update-site/http://ermaster.sourceforge.net/update-site/
-
         </fieldset>
         
         <div class="actions">
             <input type="submit" value="Create this book" class="btn primary"> or 
-            @*<a href="@routes.BookApplication.showBooklist()" class="btn">Cancel</a>*@ 
+            <a href="@routes.BookApplication.showBookList()" class="btn">Cancel</a> 
         </div>        
         
     } 

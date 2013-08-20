@@ -1,6 +1,9 @@
 package actions;
 
+import controllers.UserApplication;
+import models.Member;
 import play.*;
+import play.db.ebean.Model.Finder;
 import play.mvc.*;
 import play.mvc.Http.*;
 
@@ -27,11 +30,12 @@ public class BasicAuth extends Action.Simple {
 
         String username = credString[0];
         String password = credString[1];
-
-        if ( username.equals("userid") && password.equals("password") ) {
+        
+        if ( UserApplication.existsMember(username,password) ) {
             return delegate.call(ctx);
         } else {
             return unauthorized();
         }
-    }
+    }  
+    
 }

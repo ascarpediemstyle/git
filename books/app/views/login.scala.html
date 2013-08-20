@@ -1,4 +1,4 @@
-@(userForm: Form[User])
+@(memberForm: Form[Member])
 
 @import helper._
 
@@ -6,8 +6,8 @@
     
     @form(routes.UserApplication.login()) {
     	<fieldset>
-	    	@inputText(userForm("user_id"), '_label -> "user id")  
-	    	@inputText(userForm("password"), '_label -> "password") 
+	    	@inputText(memberForm("user_id"), '_label -> "user id")  
+	    	@inputText(memberForm("password"), '_label -> "password") 
 	    </fieldset>
 	    
 	    <div class="actions">
