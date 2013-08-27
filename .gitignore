@@ -15,3 +15,5 @@ books/README
 books/.target
 
 books/lib/commons-daemon-1.0.15.jar
+
+books/logfile
