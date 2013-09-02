@@ -1,3 +1,10 @@
+body{
+width:900px;
+margin-left:auto;
+margin-right:auto;
+/*background-image:url(background.png);*/
+}
+
 header#pageheader {
 background-image:url(book.png);
 padding:28px 20px 98px
@@ -24,9 +31,7 @@ top:0;
 -webkit-transform:rotate(45deg) translate(62px,-20px);
 }
 
-body{
-background-image:url(background.png);
-}
+
 nav ul {
 margin: 0;
 padding: 0;
@@ -43,8 +48,11 @@ padding: 2px;
 background-color: #fffdee;*/
 text-align: center;
 }
-
-
+article {
+width:auto;
+margin-left:auto;
+margin-right:auto;
+}
 article header h1{
 background:none;
 font-size:1em;
@@ -60,6 +68,20 @@ clear;both
 
 .clearLeft { 
 clear: left; 
+}
+
+article section#book{
+padding-left:20px;
+border: 1px #000000 solid;
+background-color: #ffffff;
+overflow:hidden;
+background: -webkit-linear-gradient(#ffffff 0%,#dfdfdf 100%);
+}
+
+article section figure{
+margin:0;
+float:left;
+margin-right:15px;
 }
 
 footer {
