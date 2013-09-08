@@ -5,6 +5,7 @@ margin-right:auto;
 /*background-image:url(background.png);*/
 }
 
+
 header#pageheader {
 background-image:url(book.png);
 padding:28px 20px 98px
@@ -38,16 +39,30 @@ padding: 0;
 list-style-type: none;
 }
 
+
 nav ul li {
 list-style-type: none;
 float: left;
 width: 8em;
 margin-right: 5px;
-padding: 2px;
-/*border: 1px #ffb366 solid;
-background-color: #fffdee;*/
+padding: 5px 0 5px 10px;
+display: block;
+width: 165px;
+text-decoration: none;
+border-left: 5px solid #000000;
+background-color: #eeeeee;
+color: #000000;
 text-align: center;
 }
+
+nav ul li:hover {
+  background-color: #999999;
+  color: #ff0000;
+  border-left: 5px solid #ff0000;
+}
+
+
+
 article {
 width:auto;
 margin-left:auto;
@@ -72,13 +87,14 @@ clear: left;
 
 article section#book{
 padding-left:20px;
+margin:20px;
 border: 1px #000000 solid;
 background-color: #ffffff;
 overflow:hidden;
 background: -webkit-linear-gradient(#ffffff 0%,#dfdfdf 100%);
 }
 
-article section figure{
+article section#book figure{
 margin:0;
 float:left;
 margin-right:15px;
